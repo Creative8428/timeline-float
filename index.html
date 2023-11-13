@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"
+        defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <div id="mySideNav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="box box-rounded">
+            <div class="box__header box__header--green row">
+                <div class="col"><strong>Request timeline v3</strong></div>
+            </div>
+            <div class="box__body sized-container">
+                <ul class="timeline">
+                    <li class="timeline-item">
+                        <div class="timeline-item__date"><time class="date">01/01/2021</time></div>
+                        <div class="timeline-item__body">
+                            <h4 class="mt-0 mb-0">Approval</h4>
+                            <p><strong>Assigned to: </strong>
+                                John Doe</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-item__date"><time class="date">01/01/2021</time></div>
+                        <div class="timeline-item__body">
+                            <h4 class="mt-0 mb-0">Approval</h4>
+                            <p><strong>Approved by: </strong>
+                                John Doe</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-item__date"><time class="date">01/01/2023</time></div>
+                        <div class="timeline-item__body">
+                            <h4 class="mt-0 mb-0">Approval</h4>
+                            <p><strong>Assigned to: </strong>
+                                John Doe</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Draggable DIV -->
+    <div id="mydiv">
+        <button class="btn btn-primary" type="button" id="mydivheader" data-bs-toggle="collapse"
+            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Floating button timeline<i class="fa fa-arrows mx-2"></i></button>
+        <div class="collapse show" id="collapseExample">
+            <div class="box box-rounded">
+                <div class="box__header box__header--green row">
+                    <div class="col"><strong>Request timeline v1</strong></div>
+                </div>
+                <div class="box__body sized-container">
+                    <div class="readmore" style="--readmore-height: 120px;">
+                        <ul class="timeline">
+                            <li class="timeline-item">
+                                <div class="timeline-item__date"><time class="date">01/01/2021</time></div>
+
+                                <div class="timeline-item__body">
+                                    <h4 class="mt-0 mb-0">Approval</h4>
+                                    <p><strong>Assigned to: </strong>
+                                        John Doe</p>
+                                </div>
+                            </li>
+                            <li class="timeline-item">
+                                <div class="timeline-item__date"><time class="date">01/01/2021</time></div>
+
+                                <div class="timeline-item__body">
+                                    <h4 class="mt-0 mb-0">Approval</h4>
+                                    <p><strong>Approved by: </strong>
+                                        John Doe</p>
+                                </div>
+                            </li>
+                            <li class="timeline-item">
+                                <div class="timeline-item__date"><time class="date">01/01/2023</time></div>
+
+                                <div class="timeline-item__body">
+                                    <h4 class="mt-0 mb-0">Approval</h4>
+                                    <p><strong>Assigned to: </strong>
+                                        John Doe</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-readmore" data-toggle="readmore"
+                        data-readless="Read less" data-readmore="Read more" aria-label="Read more/less"
+                        aria-describedby="readMore1"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Draggable DIV without button -->
+    <div id="mydiv2">
+        <div id="mydivheader2">
+            <div class="box box-rounded box-rounded--border">
+                <div class="box__header box__header--green row">
+                    <div class="col d-flex justify-content-between align-items-center">
+                        <strong>Request timeline v2</strong>
+                        <i class="fa fa-arrows mx-2"></i>
+                    </div>
+                </div>
+                <div class="box__body sized-container">
+                    <div class="readmore" style="--readmore-height: 120px;">
+                        <ul class="timeline">
+                            <li class="timeline-item">
+                                <div class="timeline-item__date"><time class="date">01/01/2023</time></div>
+
+                                <div class="timeline-item__body">
+                                    <h4 class="mt-0 mb-0">Approval</h4>
+                                    <p><strong>Approved by: </strong>
+                                        John Doe</p>
+                                </div>
+                            </li>
+                            <li class="timeline-item">
+                                <div class="timeline-item__date"><time class="date">01/01/2023</time></div>
+
+                                <div class="timeline-item__body">
+                                    <h4 class="mt-0 mb-0">Approval</h4>
+                                    <p><strong>Approved by: </strong>
+                                        John Doe</p>
+                                </div>
+                            </li>
+                            <li class="timeline-item">
+                                <div class="timeline-item__date"><time class="date">01/01/2023</time></div>
+
+                                <div class="timeline-item__body">
+                                    <h4 class="mt-0 mb-0">Approval</h4>
+                                    <p><strong>Assigned to: </strong>
+                                        John Doe</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-readmore" data-toggle="readmore"
+                        data-readless="Read less" data-readmore="Read more" aria-label="Read more/less"
+                        aria-describedby="readMore1"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- View timeline on the right -->
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col">
+            <button type="button" id="openingBtn" class="btn btn-primary">View timeline v3</button>
+        </div>
+    </div>
+
+    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+    <div id="main" class="row">
+        <div class="col-12">
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium culpa suscipit explicabo autem rem!
+                Nulla illo quidem veniam eveniet excepturi dolores consequuntur aut, repellendus natus asperiores
+                voluptate optio possimus et?
+                Repudiandae iure placeat doloremque amet esse nam tempore similique, eaque, molestiae alias dolorum
+                laborum facere ad autem incidunt minima omnis ut aperiam doloribus quibusdam minus neque. Expedita
+                excepturi quis rem.
+                Molestiae dolores voluptatem laboriosam repellat odit amet quod soluta ad! Atque tempora cum adipisci
+                non, alias vel harum iste repellendus velit porro, veritatis earum impedit unde, cupiditate blanditiis
+                ipsam totam!
+                Quia vel cum, nisi culpa temporibus, nulla facilis dicta magnam explicabo sit nesciunt, quod tempore
+                soluta vitae eveniet. Doloribus nam iste sapiente itaque reiciendis. Rerum error dolore fugit sapiente
+                assumenda.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
