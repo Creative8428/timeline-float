@@ -19,14 +19,6 @@ delegate(document, "click", '[data-toggle="readmore"]', function (event) {
   readmoreContent.classList.toggle(expandedClass);
 });
 
-function delegate(context, event, selector, handler) {
-  context.addEventListener(event, function (e) {
-    if (e.target.matches(selector)) {
-      handler(e);
-    }
-  });
-}
-
 let isClickedMyDiv = false;
 let isClickedMyDiv2 = false;
 
