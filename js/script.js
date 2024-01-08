@@ -14,8 +14,7 @@ btn.addEventListener("click", function () {
 delegate(document, "click", '[data-toggle="readmore"]', function (event) {
   event.preventDefault();
   const readmoreBtn = event.target;
-  const readmoreContent =
-    readmoreBtn.closest(".readmore") || readmoreBtn.previousElementSibling;
+  const readmoreContent = readmoreBtn.closest(".readmore") || readmoreBtn.previousElementSibling;
   const expandedClass = "readmore--expanded";
   readmoreContent.classList.toggle(expandedClass);
 });
@@ -28,50 +27,72 @@ function delegate(context, event, selector, handler) {
   });
 }
 
+let isClickedMyDiv = false;
+let isClickedMyDiv2 = false;
+
 const draggableElements = ["mydiv", "mydiv2"];
 
 draggableElements.forEach((elementId) => {
-  dragElement(document.getElementById(elementId));
+  dragElement(document.getElementById(elementId), elementId);
 });
 
-function dragElement(elmnt) {
+function dragElement(elmnt, elementId) {
   let pos1 = 0,
     pos2 = 0,
     pos3 = 0,
     pos4 = 0;
+  let isClicked = elementId === "mydiv" ? isClickedMyDiv : isClickedMyDiv2; // Flag to track whether the element has been clicked
 
-  const idHeaders = [`${elmnt.id}header`, `${elmnt.id}header2`].filter((id) =>
-    document.getElementById(id)
-  );
-  idHeaders.forEach(
-    (headerId) =>
-      (document.getElementById(headerId).onmousedown = dragMouseDown)
-  );
-
-  if (idHeaders.length === 0) {
-    elmnt.onmousedown = dragMouseDown;
-  }
+  elmnt.ontouchstart = dragMouseDown;
+  elmnt.ontouchmove = elementDrag;
+  elmnt.ontouchend = closeDragElement;
+  elmnt.onmousedown = dragMouseDown;
+  elmnt.onmousemove = elementDrag;
+  elmnt.onmouseup = closeDragElement;
 
   function dragMouseDown(e) {
     e.preventDefault();
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
+    pos3 = e.clientX || e.changedTouches[0].clientX;
+    pos4 = e.clientY || e.changedTouches[0].clientY;
+    document.ontouchend = closeDragElement;
+    document.ontouchmove = elementDrag;
+    isClicked = true; // Set the flag to true when the element is clicked
   }
 
   function elementDrag(e) {
     e.preventDefault();
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
+    if (!isClicked) return; // Only move the element if the flag is set
+    pos1 = pos3 - (e.clientX || e.changedTouches[0].clientX);
+    pos2 = pos4 - (e.clientY || e.changedTouches[0].clientY);
+    pos3 = e.clientX || e.changedTouches[0].clientX;
+    pos4 = e.clientY || e.changedTouches[0].clientY;
     elmnt.style.top = elmnt.offsetTop - pos2 + "px";
     elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
   }
 
   function closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
+    document.ontouchend = null;
+    document.ontouchmove = null;
+    isClicked = false; // Reset the flag when the drag operation is finished
+  }
+}
+
+function delegate(context, event, selector, handler) {
+  context.addEventListener(event, function (e) {
+    if (e.target.matches(selector)) {
+      handler(e);
+    }
+  });
+  // Handle touch events
+  if (event === "click") {
+    context.addEventListener(
+      "touchstart",
+      function (e) {
+        if (e.target.matches(selector)) {
+          handler(e);
+        }
+      },
+      { passive: false }
+    );
   }
 }
