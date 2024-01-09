@@ -88,3 +88,18 @@ function delegate(context, event, selector, handler) {
     );
   }
 }
+
+// touch to close blue btn with timeline
+const header = document.getElementById("mydivheader");
+
+header.addEventListener("click", toggleCollapse);
+header.addEventListener("touchstart", toggleCollapse);
+
+function toggleCollapse() {
+  const targetElement = document.querySelector("#collapseExample");
+  if (targetElement.style.display === "none") {
+    targetElement.style.display = "block";
+  } else {
+    targetElement.style.display = "none";
+  }
+}
