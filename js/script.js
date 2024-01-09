@@ -84,7 +84,7 @@ function delegate(context, event, selector, handler) {
           handler(e);
         }
       },
-      { passive: false }
+      { passive: true }
     );
   }
 }
@@ -93,7 +93,7 @@ function delegate(context, event, selector, handler) {
 const header = document.getElementById("mydivheader");
 
 header.addEventListener("click", toggleCollapse);
-header.addEventListener("touchstart", toggleCollapse);
+header.addEventListener("touchstart", toggleCollapse, { passive: true });
 
 function toggleCollapse() {
   const targetElement = document.querySelector("#collapseExample");
